@@ -1,0 +1,36 @@
+
+/*This affects all elements in the CSS Code and sets their attributes to 0 */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+body{
+    color: rgb(51,255,51);
+    background-color:black;
+}
+
+p {
+    font-size: 30px;
+    text-align: center;
+    color: rgb(51,255,51);
+    text-shadow:  0 0 3px #80ffc0, 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 30px #00ff66;;
+}
+
+.maincontainer {
+    font-size: 16px;
+    background-color: black ;
+    width: 90vw;
+    max-width: 34em;
+    padding: 3em;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top : 50%;
+    left: 50%;
+    border-radius: 0.6em;
+    box-shadow: 0 1.2em 2.4em;
+}
+

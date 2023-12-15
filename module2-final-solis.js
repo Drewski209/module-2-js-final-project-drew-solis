@@ -12,9 +12,8 @@ const resultText = document.getElementById("result-text");
 let options = {
     cities: ["Barcelona","Toulouse","Florence","Shanghai","Sapporo","Milwaukee","Vancouver","Monterrey","Liverpool","Istanbul",],
     animals: ["Armadillo","Alligator","Platypus","Capybara","Ocelot","Weasel","Salamander","Salamander","Antelope","Wolverine",],
-    bands: ["Megadeth","Gorillaz","Slipkot","Phoenix","Aerosmith","Nirvana","Radiohead","Foreigner","Coldplay","Soundgarden"],
+    bands: ["Megadeth","Gorillaz","Slipkot","Phoenix","Aerosmith","Nirvana","Radiohead","Foreigner","Coldplay","Soundgarden",],
     video_games: ["Uncharted","Minecraft","Persona","Battlefield","Borderlands","Fallout","Dishonored","Witcher","Wolfenstein","Bloodborne",],
-
   };
 // Count 
 let WinCount = 0;
@@ -31,10 +30,32 @@ const displayOptions = () => {
     optionsContainer.appendChild(buttonCon);
   };
 
+//Word Generator 
+const generateWord = (optionValue) => {
+    let optionsButtons = document.querySelectorAll(".options");
+    //If optionValur matches the button innerText then highlight the button
+    optionsButtons.forEach((button) => {
+      if (button.innerText.toLowerCase() === optionValue) {
+        button.classList.add("active");
+      }
+      button.disabled = true;
+    });
+};
+
+
 //When a new game is started 
 const initializer = () => {
     winCount = 0;
     count = 0;
+    
+    //Creates the letter buttons 
+    for(let i = 65; i < 91; i++) {
+        let button =  document.createElement("button");
+        button.classList.add("letters");
+        //Number to ASCII [A-Z]
+        button.innerText = String.fromCharCode(i);
+        letterContainer.append(button);
+    }
     displayOptions();
 };
 

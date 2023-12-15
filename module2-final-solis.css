@@ -15,7 +15,7 @@ body{
 /* For the play area*/
 .container {
     font-size: 16px;
-    background-color: white;
+    background-color: black;
     width: 90vw;
     max-width: 34em;
     padding: 3em;
@@ -25,6 +25,7 @@ body{
     left: 50%;
     border-radius: 0.6em;
     border-color: rgb(51,255,51);
+    border-style: dashed;
 }
 /* For the button when the player starts a new game */
 #new-game-button{
@@ -57,23 +58,31 @@ body{
 
   #options-container button {
     padding: 0.6em 1.2em;
-    border: 3px solid #000000;
-    background-color: #ffffff;
-    color: #000000;
+    border: 3px solid rgb(51,255,51);
+    background-color: black;
+    color: rgb(51,255,51);
     border-radius: 0.3em;
     text-transform: capitalize;
   }
 
 #options-container button:disabled {
-    border: 3px solid black;
-  color: black;
-  background-color: #efefef;
+    border: 3px solid rgb(51,255,51);
+  color: rgb(18, 95, 18);
+  background-color: black;
 }
 
 #options-container button.active {
-    background-color: rgb(51,255,51);
-    border: 3px solid #000000;
-    color: #000000;
+    background-color: black);
+    border: 3px solid rgb(51,255,51);
+    color: rgb(51,255,51);
+}
+
+.letters {
+    color: rgb(51,255,51);
+    background-color: black;
+    border-radius: 5%;
+    border-color: rgb(51,255,51);
+    padding: 0.2em 1.0em;
 }
 
 .letter-container {
@@ -82,4 +91,24 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.6em;
+    color: rgb(51,255,51);
 }
+
+.new-game-popup {
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 0.6em;
+}
+
+.hide {
+    display: none;
+}
+

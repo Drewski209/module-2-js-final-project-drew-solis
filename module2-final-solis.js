@@ -10,12 +10,13 @@ const resultText = document.getElementById("result-text");
 //Categories Button 
 
 let options = {
-    cities: ["Barcelona","Toulouse","Florence","Shanghai","Sapporo","Milwaukee","Vancouver","Monterrey","Liverpool","Istanbul",],
+    cities: ["Barcelona","Toulouse","Florence","Shanghai","Sapporo","Milwaukee","Vancouver","Monterrey","Liverpool","Istanbul"],
     animals: ["Armadillo","Alligator","Platypus","Capybara","Ocelot","Weasel","Salamander","Salamander","Antelope","Wolverine",],
     bands: ["Megadeth","Gorillaz","Slipkot","Phoenix","Aerosmith","Nirvana","Radiohead","Foreigner","Coldplay","Soundgarden",],
     video_games: ["Uncharted","Minecraft","Persona","Battlefield","Borderlands","Fallout","Dishonored","Witcher","Wolfenstein","Bloodborne",],
-  };
-// Count 
+};
+
+  // Count 
 let WinCount = 0;
 let count = 0;
 let chosenWord = "";
@@ -30,16 +31,45 @@ const displayOptions = () => {
     optionsContainer.appendChild(buttonCon);
   };
 
-//Word Generator 
-const generateWord = (optionValue) => {
+//Blocks all buttons 
+const blocker = () => {
+  let optionsButtons = document.querySelectorAll(".options");
+  let letterButtons = document.querySelectorAll(".letters");
+  
+  //disable all options
+  optionsButtons.forEach((button) => {
+  button.disabled = true;
+});
+
+  //Disables all letters 
+  letterButtons.forEach((button) => {
+    butttons.disabled = true;
+  });
+  newGameContainer.classList.remove("hide");
+};
+
+
+
+  //Word Generator 
+  const generateWord = (optionValue) => {
     let optionsButtons = document.querySelectorAll(".options");
-    //If optionValur matches the button innerText then highlight the button
+    //If option value  matches the button innerText then highlight the button
     optionsButtons.forEach((button) => {
       if (button.innerText.toLowerCase() === optionValue) {
         button.classList.add("active");
       }
       button.disabled = true;
     });
+
+    //Hides all letters and clears previous word 
+    letterContainer.classList.remove("hide");
+    userInputSection.innerText = "";
+
+    let optionArray = options[optionValue];
+
+    //Choose Random Word 
+    chosenWord
+
 };
 
 
@@ -59,4 +89,6 @@ const initializer = () => {
     displayOptions();
 };
 
+//New Game 
+newGameButton.addEventListener("click",initializer)
 window.onload = initializer;

@@ -9,13 +9,13 @@
 
 /*For the background */
 body{
-    background-color:black
+    background-color:black;
 }
 
 /* For the play area*/
 .container {
     font-size: 16px;
-    background-color: black;
+    background-color: white;
     width: 90vw;
     max-width: 34em;
     padding: 3em;
@@ -71,6 +71,13 @@ body{
   background-color: black;
 }
 
+.letters:disabled {
+    border: 3px solid rgb(51,255,51);
+    color: rgb(18, 95, 18);
+    background-color: black;
+  }
+
+
 #options-container button.active {
     background-color: black);
     border: 3px solid rgb(51,255,51);
@@ -112,3 +119,36 @@ body{
     display: none;
 }
 
+/*The Dashes created when a game begins */
+#user-input-section {
+    display: flex;
+    justify-content: center;
+    font-size: 1.8em;
+    margin: 0.6em 1.2em 0;
+    color: rgb(51,255,51);
+}
+
+.win-msg {
+    text-align: center;
+    color: rgb(51,255,51);
+}
+
+.lose-msg {
+    text-align: center;
+    color: rgb(51,255,51);
+}
+
+p {
+    color: rgb(51,255,51);
+    text-align: center;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+    border: 3px dashed rgb(51,255,51);
+}
+
+.drawing {
+
+}

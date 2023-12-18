@@ -87,14 +87,14 @@ const generateWord = (optionValue) => {
   userInputSection.innerHTML = displayItem;
 };
 
-//When a new game is started 
+//When a new game is started, this part of the code erases the previous game to start a new game 
 const initializer = () => {
     winCount = 0;
     count = 0;
     
     //Initially erases all content
     userInputSection.innerHTML = "";
-    optionsContainer.classList = "";
+    optionsContainer.innerHTML = "";
     letterContainer.classList.add("hide");
     newGameContainer.classList.add("hide");
     letterContainer.innerHTML = "";

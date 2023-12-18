@@ -12,6 +12,14 @@ body{
     background-color:black;
 }
 
+h1 {
+    font-size: 40px;
+    color: rgb(51,255,51);
+    position: absolute;
+    top: 25%;
+    left: 40%;    
+}
+
 /* For the play area*/
 .container {
     font-size: 16px;
@@ -147,4 +155,9 @@ canvas {
     display: block;
     margin: auto;
     border: 3px dashed rgb(51,255,51);
+}
+
+.countdown {
+    color: rgb(51,255,51);
+    background-color: rgb(51,255,51);
 }

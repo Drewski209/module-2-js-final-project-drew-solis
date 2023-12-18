@@ -6,6 +6,19 @@ const newGameContainer = document.getElementById("new-game-container");
 const newGameButton = document.getElementById("new-game-button");
 const resultText = document.getElementById("result-text");
 const canvas = document.getElementById("canvas");
+const countdown = document.getElementById("countdown");
+
+// Audio Files 
+let CORRECT_LETTER = new Audio('correct_letter.wav');
+let INCORRECT_LETTER = new Audio('incorrect_letter.wav');
+let CORRECT_WORD = new Audio('correct_word.wav');
+let INCORRECT_WORD = new Audio('incorrect_word.mp3');
+
+// Set volumes for all audio files 
+CORRECT_LETTER.volume = 0.1;
+INCORRECT_LETTER.volume = 0.1;
+CORRECT_WORD.volume = 0.1;
+INCORRECT_WORD.volume = 0.1;
 
 //Categories Button 
 
@@ -46,8 +59,6 @@ const blocker = () => {
   });
   newGameContainer.classList.remove("hide");
 };
-
-
 
   //Word Generator
 const generateWord = (optionValue) => {
@@ -106,12 +117,14 @@ const initializer = () => {
               if(char === button.innerText){
                 //Replaces dash with a letter if it matches with the selected word 
                 dashes[index].innerText = char;
+                CORRECT_LETTER.play();
                 //increment counter
                 winCount += 1;
                 //if WinCount equals word length 
                 if(winCount === charArray.length) {
                   resultText.innerHTML = `<h2 class='win-msg'>You Win</h2><p>The word was <span>${chosenWord}</span></p>`;
-                //Blocks all buttons after winning 
+                  CORRECT_WORD.play();
+                  //Blocks all buttons after winning 
                 blocker();
                 }
               }
@@ -122,9 +135,11 @@ const initializer = () => {
           count += 1;
           //Draws man
           drawMan(count);
+          INCORRECT_LETTER.play();
           //If count reaches 6, the player loses the game 
           if(count === 6 ) {
             resultText.innerHTML = `<h2 class='lose-msg'>You Lose</h2><p>The word was <span>${chosenWord}</span></p>`;
+            INCORRECT_WORD.play();
             blocker();
           }
         }
@@ -143,7 +158,7 @@ const canvasCreator = () => {
   let context = canvas.getContext("2d");
   context.beginPath();
   context.strokeStyle = "rgb(51,255,51)";
-  context.lineWidth = 2;
+  context.lineWidth = 4;
 
   //For drawing lines 
   const drawLine = (fromX, fromY, toX, toY) => {
@@ -220,6 +235,22 @@ const drawMan = (count) => {
   }
 };
 
+//const startingMinutes = 2;
+//let time = startingMinutes * 60;
+
+//setInterval(updateCountdown, 1000);
+
+//function updateCountdown () {
+  //const minutes = Math.floor(time / 60);
+  //let seconds = time % 60;
+
+  //seconds = seconds < 10 ? '0' + seconds : seconds;
+
+  //countdown.innerHTML = `${minutes}:${seconds}`;
+  //time--;
+//};
+
 //New Game 
 newGameButton.addEventListener("click", initializer);
 window.onload = initializer;
+

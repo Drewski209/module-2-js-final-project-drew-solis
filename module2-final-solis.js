@@ -195,6 +195,31 @@ const canvasCreator = () => {
 
 };
 
+// Draw the man, as the incorrect letter is guessed 
+const draw = (count) => {
+  let {head, body, leftArm, rightArm, leftLeg, rightLeg} = canvasCreator();
+  switch (count) {
+    case 1: 
+      head();
+      break;
+    case 2:
+      body();
+      break;
+    case 3:
+      leftArm();
+      break;
+    case 4: 
+      rightArm();
+      break;
+    case 5: 
+      leftLeg();
+      break;
+    case 6: 
+      rightLeg();
+    default:
+      break;
+  }
+};
 
 //New Game 
 newGameButton.addEventListener("click", initializer)

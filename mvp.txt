@@ -1,0 +1,25 @@
+- Core Functions 
+Hangman/Guess the Word Game
+the game chooses a random word, and makes an equal amount of dashes or boxes for each letter 
+If a letter is guessed correctly, it appears on the screen and placed in the correct order in the way the word is spelt 
+If a letter is guessed incorrectly, one guess is removed and a part of the hangman is drawn on the screen 
+If the word is guessed correctly within the given tries, the player wins and the word is on the screen 
+If the word cannot be guessed in the given tries, the player loses the game and the word is put on the screen
+The game resets after each round regardless of the player wins or loses 
+
+-UI Design 
+Give the game a green and black color scheme to look similar to that of the monochrome CRT of the Apple II computer  
+
+
+-Added Features
+If a letter is guessed correctly, the letter is outlined green
+If a letter is guessed incorrectly, the letter is outlined red
+Sound effects when buttons are clicked 
+Timer to add more of a challenge to the player 
+
+-Things to Add If I Had More Time 
+Difficulty options where words are more complex as the difficulty increases
+A hint option that takes away a guess when used 
+More categories and words to guess 
+If a word is already guessed correctly, have storage put away that word so its not in the rotation 
+

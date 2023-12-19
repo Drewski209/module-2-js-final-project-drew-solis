@@ -1,0 +1,30 @@
+12/11/2023 – Monday -Day One 
+Got a general idea of the project idea I'm going to create, a guess the word/hangman type game where the player is tasked to guess a word by guessing the letters in the word. 
+If they fail to guess the words correctly, they lose the game.
+
+12/13/2023 – Wednesday - Day Two  
+Got the repo on GitHub up and running after working out the bug in the git setup. I found multiple videos on YouTube that give a general base of the game I'm creating. 
+I will use them as a code along and changing the look of the UI and adding more features to the game
+
+12/14/2023 – Thursday - Day Three
+Got the code from the code along about halfway done. Got the categories, letters, dashes working on display
+
+12/15/2023 – Friday - Day Four
+Almost done working on the canvas part and got most of it done along with the styling to the Apple II design that I was going for 
+
+12/17/2023 – Sunday - Day Five
+Finished working on the canvas but turned into problem where the categories appear after each game so I have the issue in the code causing the bug. 
+Besides that, the rough draft of the code is pretty much is and I start working on the add-ons 
+
+12/18/2023 - Monday - Day Six
+Fixed the bug that was causing the game to restart on top of itself, literally one line of code that was causing the problem. The entire page is finally black and green in the Apple II 
+design I was going for. Added sound effects for button clicks and a timer but there is a bug where the time is not counting down when its activated 
+
+
+
+
+
+
+
+
+

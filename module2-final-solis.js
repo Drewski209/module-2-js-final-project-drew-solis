@@ -24,10 +24,10 @@ OPTION_SELECT.volume = 0.1;
 
 //Categories Button 
 let options = {
-    cities: ["Barcelona","Toulouse","Florence","Shanghai","Sapporo","Milwaukee","Vancouver","Monterrey","Liverpool","Istanbul"],
+    cities: ["Barcelona","Toulouse","Florence","Shanghai","Sapporo","Milwaukee","Vancouver","Monterrey","Liverpool","Istanbul",],
     animals: ["Armadillo","Alligator","Platypus","Capybara","Ocelot","Weasel","Salamander","Salamander","Antelope","Wolverine",],
     bands: ["Megadeth","Gorillaz","Slipknot","Phoenix","Aerosmith","Nirvana","Radiohead","Foreigner","Coldplay","Soundgarden",],
-    video_games: ["Uncharted","Minecraft","Persona","Battlefield","Borderlands","Fallout","Dishonored","Witcher","Wolfenstein","Bloodborne",]
+    video_games: ["Uncharted","Minecraft","Persona","Battlefield","Borderlands","Fallout","Dishonored","Witcher","Wolfenstein","Bloodborne",],
 };
 
 // Count 
@@ -40,7 +40,7 @@ const displayOptions = () => {
     optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
     let buttonCon = document.createElement("div");
     for (let value in options) {
-      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}'); updateCountdown() ;OPTION_SELECT.play()">${value}</button>`;
+      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}'); updateCountdown(); setInterval(updateCountdown,1000); OPTION_SELECT.play() ">${value}</button>`;
     }
     optionsContainer.appendChild(buttonCon);
 };
@@ -102,6 +102,7 @@ const initializer = () => {
     newGameContainer.classList.add("hide");
     letterContainer.innerHTML = "";
     countdown.innerHTML = "";
+
 
 
     //Creates the letter buttons 
@@ -243,7 +244,7 @@ const drawMan = (count) => {
 };
 
 // Timer Function
-const startingMinutes = 2;
+const startingMinutes = 1;
 let time = startingMinutes * 60;
   
 function updateCountdown () {

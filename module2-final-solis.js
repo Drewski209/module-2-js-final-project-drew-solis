@@ -11,17 +11,18 @@ const countdown = document.getElementById("countdown");
 // Audio Files 
 let CORRECT_LETTER = new Audio('correct_letter.wav');
 let INCORRECT_LETTER = new Audio('incorrect_letter.wav');
-let CORRECT_WORD = new Audio('correct_word.wav');
-let INCORRECT_WORD = new Audio('incorrect_word.mp3');
+let CORRECT_WORD = new Audio('won_game.wav');
+let INCORRECT_WORD = new Audio('lost_game.wav');
+let OPTION_SELECT = new Audio('option_select.wav');
 
 // Set volumes for all audio files 
 CORRECT_LETTER.volume = 0.1;
 INCORRECT_LETTER.volume = 0.1;
-CORRECT_WORD.volume = 0.1;
-INCORRECT_WORD.volume = 0.1;
+CORRECT_WORD.volume = 0.5;
+INCORRECT_WORD.volume = 0.5;
+OPTION_SELECT.volume = 0.1;
 
 //Categories Button 
-
 let options = {
     cities: ["Barcelona","Toulouse","Florence","Shanghai","Sapporo","Milwaukee","Vancouver","Monterrey","Liverpool","Istanbul"],
     animals: ["Armadillo","Alligator","Platypus","Capybara","Ocelot","Weasel","Salamander","Salamander","Antelope","Wolverine",],
@@ -29,7 +30,7 @@ let options = {
     video_games: ["Uncharted","Minecraft","Persona","Battlefield","Borderlands","Fallout","Dishonored","Witcher","Wolfenstein","Bloodborne",]
 };
 
-  // Count 
+// Count 
 let WinCount = 0;
 let count = 0;
 let chosenWord = "";
@@ -39,7 +40,7 @@ const displayOptions = () => {
     optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
     let buttonCon = document.createElement("div");
     for (let value in options) {
-      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}')">${value}</button>`;
+      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}'); updateCountdown() ;OPTION_SELECT.play()">${value}</button>`;
     }
     optionsContainer.appendChild(buttonCon);
 };
@@ -85,12 +86,14 @@ const generateWord = (optionValue) => {
 
   //Display each element as span
   userInputSection.innerHTML = displayItem;
+
 };
 
 //When a new game is started, this part of the code erases the previous game to start a new game 
 const initializer = () => {
     winCount = 0;
     count = 0;
+    time = startingMinutes * 60;
     
     //Initially erases all content
     userInputSection.innerHTML = "";
@@ -98,6 +101,7 @@ const initializer = () => {
     letterContainer.classList.add("hide");
     newGameContainer.classList.add("hide");
     letterContainer.innerHTML = "";
+    countdown.innerHTML = "";
 
 
     //Creates the letter buttons 
@@ -110,6 +114,7 @@ const initializer = () => {
         button.addEventListener("click", () => {
           let charArray = chosenWord.split("");
           let dashes = document.getElementsByClassName("dashes");
+
           //If array contains clicked value replace the matched dash with letter else draw canvas 
           if(charArray.includes(button.innerText)){
             charArray.forEach((char,index) => {
@@ -118,6 +123,7 @@ const initializer = () => {
                 //Replaces dash with a letter if it matches with the selected word 
                 dashes[index].innerText = char;
                 CORRECT_LETTER.play();
+
                 //increment counter
                 winCount += 1;
                 //if WinCount equals word length 
@@ -140,6 +146,7 @@ const initializer = () => {
           if(count === 6 ) {
             resultText.innerHTML = `<h2 class='lose-msg'>You Lose</h2><p>The word was <span>${chosenWord}</span></p>`;
             INCORRECT_WORD.play();
+
             blocker();
           }
         }
@@ -235,22 +242,24 @@ const drawMan = (count) => {
   }
 };
 
-//const startingMinutes = 2;
-//let time = startingMinutes * 60;
+// Timer Function
+const startingMinutes = 2;
+let time = startingMinutes * 60;
+  
+function updateCountdown () {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  countdown.innerHTML = `${minutes}:${seconds}`;
+  time--;
+  if(time == 0 ) {
+    INCORRECT_WORD.play();
+    resultText.innerHTML = `<h2 class='time-over'>Time Over</h2><p>The word was <span>${chosenWord}</span></p>`;
+    blocker();
+  }
+};
 
-//setInterval(updateCountdown, 1000);
-
-//function updateCountdown () {
-  //const minutes = Math.floor(time / 60);
-  //let seconds = time % 60;
-
-  //seconds = seconds < 10 ? '0' + seconds : seconds;
-
-  //countdown.innerHTML = `${minutes}:${seconds}`;
-  //time--;
-//};
 
 //New Game 
 newGameButton.addEventListener("click", initializer);
 window.onload = initializer;
-

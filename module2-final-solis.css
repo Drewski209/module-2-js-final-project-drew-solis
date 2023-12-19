@@ -80,7 +80,7 @@ h1 {
 }
 
 .letters:disabled {
-    border: 3px solid rgb(51,255,51);
+    border: 3px solid rgb(230, 15, 8);
     color: rgb(18, 95, 18);
     background-color: black;
   }
@@ -146,6 +146,11 @@ h1 {
     color: rgb(51,255,51);
 }
 
+.time-over {
+    text-align: center;
+    color: rgb(51,255,51);
+}
+
 p {
     color: rgb(51,255,51);
     text-align: center;
@@ -160,4 +165,9 @@ canvas {
 .countdown {
     color: rgb(51,255,51);
     background-color: rgb(51,255,51);
+}
+
+#hint {
+    color: rgb(51,255,51);
+    text-align: left;
 }

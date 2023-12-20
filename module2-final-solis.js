@@ -34,14 +34,18 @@ let options = {
 let WinCount = 0;
 let count = 0;
 let chosenWord = "";
+let intervalid;
 
+function startInterval() {
+  intervalid = setInterval(updateCountdown,1000);
+};
 
 //Display Category Buttons 
 const displayOptions = () => {
     optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
     let buttonCon = document.createElement("div");
     for (let value in options) {
-      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}'); updateCountdown(); setInterval(updateCountdown,1000); OPTION_SELECT.play() ">${value}</button>`;
+      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}'); startInterval(); OPTION_SELECT.play() ">${value}</button>`;
       
     }
     optionsContainer.appendChild(buttonCon);
@@ -97,7 +101,6 @@ const generateWord = (optionValue) => {
 const initializer = () => {
   winCount = 0;
   count = 0;
-  clearTimeout(updateCountdown);
     
   //Initially erases all content
   userInputSection.innerHTML = "";
@@ -247,7 +250,7 @@ const drawMan = (count) => {
 };
 
 // Countdown timer 
-const startingMinutes = 0.1;
+const startingMinutes = 2;
 let time = startingMinutes * 60;
 
   // Function that makes the countdown timer work 
@@ -261,6 +264,7 @@ let time = startingMinutes * 60;
   if(time == 0 ) {
     INCORRECT_WORD.play();
     resultText.innerHTML = `<h2 class='time-over'>Time Over</h2><p>The word was <span>${chosenWord}</span></p>`;
+    clearInterval(intervalid);
     blocker();
   }
 };

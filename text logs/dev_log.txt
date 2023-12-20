@@ -24,7 +24,7 @@ Fixed the bug that was causing the game to restart on top of itself, literally o
 design I was going for. Added sound effects for button clicks and a timer but there is a bug where the time is not counting down when its activated 
 
 12/19/2023 - Tuesday - Day Seven 
-Clean up the code, placed comments to the code to 
+Clean up the code, placed comments to the code to make it easier to understand for myself and other that look at the code 
 
 
 

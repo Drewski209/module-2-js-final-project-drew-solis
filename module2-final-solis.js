@@ -247,7 +247,7 @@ const drawMan = (count) => {
 };
 
 // Countdown timer 
-const startingMinutes = 2;
+const startingMinutes = 0.1;
 let time = startingMinutes * 60;
 
   // Function that makes the countdown timer work 

@@ -1,3 +1,6 @@
+12/8/2023 - Friday - Day One 
+Looked at some Youtube videos to find some Javascript 
+
 12/11/2023 – Monday -Day One 
 Got a general idea of the project idea I'm going to create, a guess the word/hangman type game where the player is tasked to guess a word by guessing the letters in the word. 
 If they fail to guess the words correctly, they lose the game.
@@ -20,7 +23,8 @@ Besides that, the rough draft of the code is pretty much is and I start working 
 Fixed the bug that was causing the game to restart on top of itself, literally one line of code that was causing the problem. The entire page is finally black and green in the Apple II 
 design I was going for. Added sound effects for button clicks and a timer but there is a bug where the time is not counting down when its activated 
 
-
+12/19/2023 - Tuesday - Day Seven 
+Clean up the code, placed comments to the code to 
 
 
 

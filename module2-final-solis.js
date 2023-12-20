@@ -35,6 +35,7 @@ let WinCount = 0;
 let count = 0;
 let chosenWord = "";
 
+
 //Display Category Buttons 
 const displayOptions = () => {
     optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
@@ -49,12 +50,12 @@ const displayOptions = () => {
 const blocker = () => {
   let optionsButtons = document.querySelectorAll(".options");
   let letterButtons = document.querySelectorAll(".letters");
-  //disable all options
+  //Disable all options when one is already selected 
   optionsButtons.forEach((button) => {
     button.disabled = true;
   });
 
-  //disable all letters
+  //Disable all letter buttons 
   letterButtons.forEach((button) => {
     button.disabled.true;
   });
@@ -77,11 +78,11 @@ const generateWord = (optionValue) => {
   userInputSection.innerText = "";
 
   let optionArray = options[optionValue];
-  //choose random word
+  //Chooses a random word from the different categories 
   chosenWord = optionArray[Math.floor(Math.random() * optionArray.length)];
   chosenWord = chosenWord.toUpperCase();
 
-  //replace every letter with span containing dash
+  //Replace every letter with span containing dash
   let displayItem = chosenWord.replace(/./g, '<span class="dashes">_</span>');
 
   //Display each element as span
@@ -91,53 +92,50 @@ const generateWord = (optionValue) => {
 
 //When a new game is started, this part of the code erases the previous game to start a new game 
 const initializer = () => {
-    winCount = 0;
-    count = 0;
-    time = startingMinutes * 60;
+  winCount = 0;
+  count = 0;
     
-    //Initially erases all content
-    userInputSection.innerHTML = "";
-    optionsContainer.innerHTML = "";
-    letterContainer.classList.add("hide");
-    newGameContainer.classList.add("hide");
-    letterContainer.innerHTML = "";
-    countdown.innerHTML = "";
+  //Initially erases all content
+  userInputSection.innerHTML = "";
+  optionsContainer.innerHTML = "";
+  letterContainer.classList.add("hide");
+  newGameContainer.classList.add("hide");
+  letterContainer.innerHTML = "";
+  countdown.innerHTML = "";
+  time = startingMinutes * 60;
 
+  //Creates the letter buttons 
+  for(let i = 65; i < 91; i++) {
+    let button =  document.createElement("button");
+      button.classList.add("letters");
+      //Number to ASCII [A-Z]
+      button.innerText = String.fromCharCode(i);
+      //Character Button Click
+      button.addEventListener("click", () => {
+      let charArray = chosenWord.split("");
+      let dashes = document.getElementsByClassName("dashes");
 
-
-    //Creates the letter buttons 
-    for(let i = 65; i < 91; i++) {
-        let button =  document.createElement("button");
-        button.classList.add("letters");
-        //Number to ASCII [A-Z]
-        button.innerText = String.fromCharCode(i);
-        //Character Button Click
-        button.addEventListener("click", () => {
-          let charArray = chosenWord.split("");
-          let dashes = document.getElementsByClassName("dashes");
-
-          //If array contains clicked value replace the matched dash with letter else draw canvas 
-          if(charArray.includes(button.innerText)){
-            charArray.forEach((char,index) => {
-              //If character in array is the same as clicked button
-              if(char === button.innerText){
-                //Replaces dash with a letter if it matches with the selected word 
-                dashes[index].innerText = char;
-                CORRECT_LETTER.play();
-
-                //increment counter
-                winCount += 1;
-                //if WinCount equals word length 
-                if(winCount === charArray.length) {
-                  resultText.innerHTML = `<h2 class='win-msg'>You Win</h2><p>The word was <span>${chosenWord}</span></p>`;
-                  CORRECT_WORD.play();
-                  //Blocks all buttons after winning 
+      //If array contains clicked value replace the matched dash with letter else draw canvas 
+        if(charArray.includes(button.innerText)){
+          charArray.forEach((char,index) => {
+          //If character in array is the same as clicked button
+            if(char === button.innerText){
+              //Replaces dash with a letter if it matches with the selected word 
+              dashes[index].innerText = char;
+              CORRECT_LETTER.play();
+              //increment counter
+              winCount += 1;
+              //if WinCount equals word length 
+              if(winCount === charArray.length) {
+                resultText.innerHTML = `<h2 class='win-msg'>You Win</h2><p>The word was <span>${chosenWord}</span></p>`;
+                CORRECT_WORD.play();
+                //Blocks all buttons after winning 
                 blocker();
                 }
               }
             });
           }
-        else{
+              else{
           //Lose count 
           count += 1;
           //Draws man
@@ -161,6 +159,7 @@ const initializer = () => {
     // Initial drawing is the frame
     initialDrawing();
 };
+
 // Canvas 
 const canvasCreator = () => {  
   let context = canvas.getContext("2d");
@@ -243,16 +242,17 @@ const drawMan = (count) => {
   }
 };
 
-// Timer Function
-const startingMinutes = 1;
+// Countdown timer 
+const startingMinutes = 0.1;
 let time = startingMinutes * 60;
-  
+  // Function that makes the countdown timer work 
 function updateCountdown () {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
   seconds = seconds < 10 ? '0' + seconds : seconds;
   countdown.innerHTML = `${minutes}:${seconds}`;
   time--;
+  // Once the timer reaches 0, the game is over and shows the time over screen 
   if(time == 0 ) {
     INCORRECT_WORD.play();
     resultText.innerHTML = `<h2 class='time-over'>Time Over</h2><p>The word was <span>${chosenWord}</span></p>`;

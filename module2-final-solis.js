@@ -36,6 +36,7 @@ let count = 0;
 let chosenWord = "";
 let intervalid;
 
+// Sets the timer to countdown after an option is clicked 
 function startInterval() {
   intervalid = setInterval(updateCountdown,1000);
 };

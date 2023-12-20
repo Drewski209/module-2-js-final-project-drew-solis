@@ -26,6 +26,9 @@ design I was going for. Added sound effects for button clicks and a timer but th
 12/19/2023 - Tuesday - Day Seven 
 Clean up the code, placed comments to the code to make it easier to understand for myself and other that look at the code 
 
+12/20/2023 - Wednesday - Day Eight
+Finally fixed the bug with the timer thanks to the help of some classmates. Had to use a clearInterval() function  
+
 
 
 

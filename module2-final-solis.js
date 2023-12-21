@@ -34,23 +34,23 @@ let options = {
 let WinCount = 0;
 let count = 0;
 let chosenWord = "";
-let intervalid;
+let countStop;
 
 // Sets the timer to countdown after an option is clicked 
 function startInterval() {
-  intervalid = setInterval(updateCountdown,1000);
+  countStop = setInterval(updateCountdown,1000);
 };
 
 //Display Category Buttons 
-const displayOptions = () => {
-    optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
-    let buttonCon = document.createElement("div");
-    for (let value in options) {
-      buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}'); startInterval(); OPTION_SELECT.play() ">${value}</button>`;
-      
-    }
-    optionsContainer.appendChild(buttonCon);
-};
+function displayOptions() {
+  optionsContainer.innerHTML += `<h3>Please Select An Option</h3>`;
+  let buttonCon = document.createElement("div");
+  for (let value in options) {
+    buttonCon.innerHTML += `<button class="options" onclick="generateWord('${value}'); countStop; OPTION_SELECT.play() ">${value}</button>`;
+
+  }
+  optionsContainer.appendChild(buttonCon);
+}
 
 
 
@@ -265,7 +265,7 @@ let time = startingMinutes * 60;
   if(time == 0 ) {
     INCORRECT_WORD.play();
     resultText.innerHTML = `<h2 class='time-over'>Time Over</h2><p>The word was <span>${chosenWord}</span></p>`;
-    clearInterval(intervalid);
+    clearInterval(countStop);
     blocker();
   }
 };
